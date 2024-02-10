@@ -1,0 +1,58 @@
+
+
+  <div class="container mt-5">
+    <h2>Add New Item</h2>
+    <form [formGroup]="addItemForm" (ngSubmit)="addItem()">
+      <div class="form-group">
+        <label for="id">ID:</label>
+        <input type="text" class="form-control"  name="id" formControlName="id">
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control"  name="name" formControlName="name">
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" name="description" formControlName="description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input class="form-control"  name="price"  formControlName="price">
+      </div>
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input class="form-control"  name="imageUrl"  formControlName="imageUrl">
+        <!-- <input type="file"  name="image" (change)="getImage($event)"> -->
+        <!-- <img [src]="imageUrl" alt="Couldnt Load please add again!" height="150px" width="150px" *ngIf="itemImage"> -->
+      </div>
+      <button type="submit" class="btn btn-primary">Add Item</button>
+    </form>
+  </div>
+
+
+    <section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5" >
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let item of allItem">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" [src]="item.imageUrl" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{item.name}}</h5>
+                            <!-- Product price-->
+                            ${{item.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>  
+ 
