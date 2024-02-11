@@ -37,5 +37,22 @@ export class GserviceService {
     return this.http.get(`${this.server_url}/get/items`)
   }
 
+  // delete item
+
+  deleteItemApi(id:any){
+    return this.http.delete(`${this.server_url}/delete/item/${id}`)
+  }
+
+  // single item to update
+  
+  getsingleItemApi(id:any){
+    return this.http.get(`${this.server_url}/getsingle/item/${id}`)
+  }
+  
+  // update item
+  updateAPi(item:any,id:any){
+    return this.http.put(`${this.server_url}/update/item/${id}`,item)
+  }
+
   
 }

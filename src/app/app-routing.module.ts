@@ -14,6 +14,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AddItemsComponent } from './add-items/add-items.component';
 import { MydetailsComponent } from './mydetails/mydetails.component';
+import { EditItemComponent } from './edit-item/edit-item.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'orders',component:OrdersComponent},
   {path:'add/item',component:AddItemsComponent},
   {path:'account/mydetails',component:MydetailsComponent},
+  {path:'edit/item/:id',component:EditItemComponent},
   {path:'**',component:PagenotfoundComponent}
 
 ];

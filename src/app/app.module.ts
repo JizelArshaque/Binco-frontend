@@ -20,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddItemsComponent } from './add-items/add-items.component';
 import { MydetailsComponent } from './mydetails/mydetails.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { EditItemComponent } from './edit-item/edit-item.component'
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { HttpClientModule } from '@angular/common/http'
     HeaderComponent,
     FooterComponent,
     AddItemsComponent,
-    MydetailsComponent
+    MydetailsComponent,
+    EditItemComponent
   ],
   imports: [
     BrowserModule,

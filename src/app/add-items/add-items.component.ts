@@ -47,7 +47,9 @@ export class AddItemsComponent implements OnInit{
       this.api.addItemApi(item).subscribe({
         next:(res:any)=>{
           Swal.fire('item Added Successfully!')
+          
           this.getItem()
+          this.addItemForm.reset()
         },
         error:(err:any)=>{
           Swal.fire(err.error)
@@ -72,6 +74,21 @@ export class AddItemsComponent implements OnInit{
     })
   }
 
+  // delete item
+
+  delete(id:any){
+    this.api.deleteItemApi(id).subscribe({
+      next:(res:any)=>{
+        Swal.fire('Item deleted!')
+        this.getItem()
+      },
+      error:(err:any)=>{
+        Swal.fire(err.error)
+      }
+    })
+  }
+
+    
   
 
 
