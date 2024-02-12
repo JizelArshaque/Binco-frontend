@@ -1,33 +1,35 @@
 <app-header></app-header>
 <!-- Empty Wishlist -->
 
-<div class="d-flex flex-column justify-content-center align-items-center" >
+<div class="d-flex flex-column justify-content-center align-items-center" *ngIf="(items.length==0)">
     <img src="./assets/images/wlist.png" alt="no img"><br>
-    <a routerLink="" class="text-danger" style="text-decoration: none;"> Add to your list</a>
+    <a routerLink="/allproduct" class="text-danger" style="text-decoration: none;"> Add to your list</a>
 
 </div>
 
 
 <!-- Wishlist -->
-<section class="py-5">
+<section class="py-5"  *ngIf="!(items.length == 0)">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5">
+            <div class="col mb-5" *ngFor="let item of items">
                 <div class="card h-100">
                     <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                    <img class="card-img-top" [src]="item.imageUrl" alt="no img" />
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
+                            <h5 class="fw-bolder">{{item.name}}</h5>
                             <!-- Product price-->
-                            $40.00 - $80.00
+                            ₹{{item.price}}
                         </div>
                     </div>
                     <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                    <div class="d-flex justify-content-between p-4">
+                        <a class="btn btn-outline-danger mt-auto" (click)="delete(item._id)">Remove</a>
+                        <a class="btn btn-outline-success mt-auto" (click)="cartItem(item)">cart</a>
+
                     </div>
                 </div>
             </div>

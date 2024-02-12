@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -12,6 +12,18 @@ export class GserviceService {
   
 
   server_url = 'http://localhost:3000'
+
+
+  addTokenToheaders(){
+    let headers = new HttpHeaders()
+    const token = sessionStorage.getItem("token")
+
+    if(token){
+      headers = headers.append('Authorization',`Bearer ${token}`)
+    }
+
+    return{headers}
+  }
 
 
   // registerusers
@@ -54,5 +66,21 @@ export class GserviceService {
     return this.http.put(`${this.server_url}/update/item/${id}`,item)
   }
 
+  // addtowishlist
+  wishlistApi(product:any){
+    return this.http.post(`${this.server_url}/add/wishlist`,product,this.addTokenToheaders())
+  }
+
+  // get item wihslis
+
+  getWishlisApi(){
+    return this.http.get(`${this.server_url}/getwishlist/items`,this.addTokenToheaders())
+  }
+
+  // remove from wishlist
+
+  removeWishlistApi(id:any){
+    return this.http.delete(`${this.server_url}/remove/wishlistItem/${id}`,this.addTokenToheaders())
+  }
   
 }
