@@ -2,17 +2,17 @@
 <!-- Empty cart -->
 
 
-<div class="d-flex flex-column justify-content-center align-items-center" >
+<div class="d-flex flex-column justify-content-center align-items-center" *ngIf="(allItem.length == 0)">
     <img src="https://i.pinimg.com/736x/2e/ac/fa/2eacfa305d7715bdcd86bb4956209038.jpg" alt="no img" style="height: 30%;width: 60%;"><br>
 
-    <a href="" class="text-danger" style="text-decoration: none;">Cart is Empty, Add to your Cart</a>
+    <a routerLink="/allproduct" class="text-danger" style="text-decoration: none;">Cart is Empty, Add to your Cart</a>
 
 </div>
 
 <!-- CART -->
-<div class="container mt-3 mb-4">
+<div class="container mt-3 mb-4" *ngIf="!(allItem.length == 0)">
     <div class="table-container">
-        <table class="table border shadow p-3 ">
+        <table class="table border p-3 ">
             <thead>
                 <tr>
                     <th>Index</th>
@@ -23,29 +23,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Item 1</td>
+                <tr *ngFor="let item of allItem,let i = index">
+                    <td>{{i + 1}}</td>
+                    <td>{{item.name}}</td>
                     <td>
                         
                         <div class="d-flex">
-                            <button class="btn fw-bolder fs-3" >-</button>
-                            <input type="num" class=" text-center"  value="4" style="max-width: 3rem;" readonly>
-                            <button class="btn fw-bolder fs-4">+</button>
+                            <button class="btn fw-bolder fs-3" (click)="decrementq(item._id)">-</button>
+                            <input type="num" class=" text-center"  [value]="item.quantity" style="max-width: 3rem;" readonly>
+                            <button class="btn fw-bolder fs-4" (click)=" incrementq(item._id)">+</button>
                         </div>
                         
                    </td>
-                    <td>$50.00</td>
-                    <td><button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button></td>
+                    <td>₹{{item.TotalPrice}}</td>
+                    <td><button class="btn btn-outline-danger" (click)="remove(item._id)"><i class="fa-solid fa-trash"></i></button></td>
                 </tr>
                 
             </tbody>
         </table>
-        <div class="border shadow d-flex justify-content-evenly align-items-center p-3">
+        <div class="border  d-flex justify-content-evenly align-items-center p-3">
             <div>Grandtotal</div>
-            <div>$200</div>
-            <div><button class="btn btn-primary">Proceed To Pay</button></div>
+            <div>₹{{total}}</div>
+            <div><button class="btn btn-primary" routerLink="/checkout">Proceed To Pay</button></div>
         </div>
+        <!-- <button class="btn btn-danger" (click)="emptycart()"><i class="fa-trash"></i></button> -->
     </div>
     
 </div>

@@ -22,6 +22,7 @@ import { AddItemsComponent } from './add-items/add-items.component';
 import { MydetailsComponent } from './mydetails/mydetails.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditItemComponent } from './edit-item/edit-item.component'
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { EditItemComponent } from './edit-item/edit-item.component'
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPayPalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

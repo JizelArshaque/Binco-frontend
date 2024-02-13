@@ -32,7 +32,7 @@ export class WishlistComponent implements OnInit{
   delete(id:any){
     this.api.removeWishlistApi(id).subscribe({
       next:(res:any)=>{
-        Swal.fire('Item Removed From Wishlist!')
+        // Swal.fire('Item Removed From Wishlist!')
         this.getWishlist()
       },
       error:(err:any)=>{
@@ -45,6 +45,15 @@ export class WishlistComponent implements OnInit{
   cartItem(item:any){
     if(sessionStorage.getItem("token")){
       console.log(item);
+      this.api.addToCartApi(item).subscribe({
+        next:(res:any)=>{
+          Swal.fire('Item Added To cart!')
+          this.delete(item._id)
+        },
+        error:(err:any)=>{
+          Swal.fire('could not add to cart at the moment! please try after some time!')
+        }
+      })
     }else{
       Swal.fire('please login First!')
       this.router.navigateByUrl('/login')

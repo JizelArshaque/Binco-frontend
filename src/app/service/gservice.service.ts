@@ -83,4 +83,41 @@ export class GserviceService {
     return this.http.delete(`${this.server_url}/remove/wishlistItem/${id}`,this.addTokenToheaders())
   }
   
+
+  // add to cart
+
+  addToCartApi(item:any){
+    return this.http.post(`${this.server_url}/cart/item`,item,this.addTokenToheaders())
+  }
+  
+  // getcart
+
+  getcartApi(){
+    return this.http.get(`${this.server_url}/getcart/item`,this.addTokenToheaders())
+  }
+
+  // remove cart item
+
+  removecartitemApi(id:any){
+    return this.http.delete(`${this.server_url}/removecart/item/${id}`)
+  }
+
+  // increment quantity
+  incrementcartQApi(id:any){
+    return this.http.get(`${this.server_url}/quantityInc/${id}`)
+  }
+
+  // decrement quantity
+  decrementcartQapi(id:any){
+    return this.http.get(`${this.server_url}/quantityDec/${id}`)
+  }
+
+  cartGoneApi(){
+    return this.http.delete(`${this.server_url}/cart/empty`,this.addTokenToheaders())
+  }
+
+  // order creation
+  createOrderApi(item:any){
+    return this.http.post(`${this.server_url}/order/creation`,item,this.addTokenToheaders())
+  }
 }

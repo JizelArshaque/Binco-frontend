@@ -1,1 +1,103 @@
-<p>checkout works!</p>
+<button (click)="ordercreation()">hihihi</button>
+
+<div class="d-flex">
+    <div class="col-md-6 d-flex flex-column justify-content-start align-items-center mt-5 mb-5">
+        
+       <table class=" rounded border  p-4" style="width: 85vh;">
+            <thead>
+                <tr>
+                    <td colspan="5"><h3 class="text-center text-primary">Invoice</h3></td>
+                </tr>
+                <tr>
+                    <th>Sl No.</th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price per Unit</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of allItem, let i =index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.TotalPrice}}</td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3" class="text-Center text-Primary"></td>
+                    
+                    <td><b>Grand Total:</b></td>
+                    <td>{{GrandTotal}}</td>
+                </tr>
+            </tbody>
+       </table>
+    </div>
+    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center mt-5 mb-5" *ngIf="!makePayment">
+        <h3 class="text-center ">Shipping Address</h3>
+       
+
+
+          <form [formGroup]="checkoutForm" class="form-control rounded border shadow p-4" style="width: 75vh;">
+            <div class="p-2">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Jizel Arshaque" name="unamee"  formControlName="fullname">
+                    <label for="floatingInput">Name</label>
+                    <span *ngIf="checkoutForm.get('fullname')?.errors && checkoutForm.get('fullname')?.touched" class="text-danger">Invalid Input</span>
+                  </div>
+                 
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingApartment" placeholder="Apartment" name="apartmente" formControlName="place">
+                    <label for="floatingApartment">Place</label>
+                    <span *ngIf="checkoutForm.get('place')?.errors && checkoutForm.get('place')?.touched" class="text-danger">Invalid Input</span>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingplace" placeholder="Place" name="placee" formControlName="phone">
+                    <label for="floatingplace">Phone</label>
+                    <span *ngIf="checkoutForm.get('phone')?.errors && checkoutForm.get('phone')?.touched" class="text-danger">Invalid Input</span>
+                  </div>
+
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingPincode" placeholder="Pincode" name="pincodee" formControlName="pincode">
+                    <label for="floatingPincode">Pincode</label>
+                    <span *ngIf="checkoutForm.get('pincode')?.errors && checkoutForm.get('pincode')?.touched" class="text-danger">Invalid Input</span>
+                  </div>
+
+                  <div class="d-flex justify-content-between mt-2">
+                    <button  class="btn btn-warning" (click)="goBack()">Cancel</button>
+                    <button class="btn btn-success" (click)="confirm()">Proceed To Pay</button>
+                    
+                </div>
+                
+            </div>
+            </form>
+          
+    </div>
+
+    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center mt-5 mb-5" *ngIf="makePayment">
+        <form  class="form-control rounded border shadow p-4" style="width: 75vh;">
+            <div class="p-2">
+                
+
+                <h5 class="text-secondary">Full Name:<span class="text-dark">{{checkoutForm.value.fullname}}</span></h5>
+                <h5 class="text-secondary">Place:<span class="text-dark"> {{checkoutForm.value.place}}</span></h5>
+                <h5 class="text-secondary">Phone no:<span class="text-dark">{{checkoutForm.value.phone}}</span></h5>
+                <h5 class="text-secondary"> Pincode:<span class="text-dark">{{checkoutForm.value.pincode}}</span> </h5>
+                <h5 class="text-primary text-center">Total Price:<span class="text-danger"> ₹{{GrandTotal}}</span></h5>
+                <div class="d-flex justify-content-between mt-2" *ngIf="payment">
+                    <button  class="btn btn-warning" (click)="cancel()">Cancel</button>
+                    <button class="btn btn-success" (click)="makePaymentF()">Make Payment</button>
+                </div>
+
+                <div  *ngIf="!payment" class="mt-2">
+                    <ngx-paypal  [config]="payPalConfig"></ngx-paypal>
+                </div>
+
+                
+            </div>
+            </form>
+
+    </div>
+</div>
