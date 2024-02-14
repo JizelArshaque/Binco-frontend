@@ -33,6 +33,9 @@ export class LoginComponent {
             console.log(res);
             sessionStorage.setItem("token",res.token)
             sessionStorage.setItem("username",res.existingUser.username)
+            sessionStorage.setItem("email",res.existingUser.email)
+            sessionStorage.setItem("id",res.existingUser._id)
+
 
             
             if(res.existingUser.email== "admin@binco.com"){

@@ -37,6 +37,12 @@ export class GserviceService {
     return this.http.post(`${this.server_url}/login/user`,user)
   }
 
+  // get details of user
+
+  getuserdetsApi(id:any){
+    return this.http.get(`${this.server_url}/getdets/${id}`)
+  }
+
   // add item
 
   addItemApi(item:any){
@@ -119,5 +125,15 @@ export class GserviceService {
   // order creation
   createOrderApi(item:any){
     return this.http.post(`${this.server_url}/order/creation`,item,this.addTokenToheaders())
+  }
+
+  // get order
+  getOrderApi(){
+    return this.http.get(`${this.server_url}/get/order`,this.addTokenToheaders())
+  }
+  // get all order APi
+
+  getallOrderApi(){
+    return this.http.get(`${this.server_url}/get/all/order`,this.addTokenToheaders())
   }
 }

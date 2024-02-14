@@ -10,21 +10,17 @@
         <div class="formm">
             <form action="/action_page.php">
               <label for="fname">username</label>
-              <input type="text" id="fname" name="firstname" placeholder="Your name.." readonly>
+              <input type="text" id="fname" name="firstname" placeholder="Your name.." readonly [value]="details.username">
           
               <label for="lname">email</label>
-              <input type="text" id="lname" name="lastname" placeholder="Your last name.." readonly>
+              <input type="text" id="lname" name="lastname" placeholder="Your last name.." readonly [value]="details.email">
 
               <label for="lname">Password</label>
-              <input type="text" id="lname" name="lastname" placeholder="Your last name.." readonly>
+              <input type="text" id="lname" name="lastname" placeholder="Your last name.." readonly [value]="details.password">
 
 
               <button class="btn btn-outline-danger ms-2" (click)="logout()">Logout</button>
 
-          
-             
-            
-            
               
             </form>
 

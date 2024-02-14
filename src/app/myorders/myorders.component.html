@@ -1,0 +1,27 @@
+
+
+
+<div class="d-flex">
+    <div class="sidebar d-flex flex-column p-3" style="height: 90vh;width: 250px; background-color: rgb(249, 179, 5);" >
+        <a routerLink="/account/mydetails" class="ms-3" style="text-decoration: none; color: whitesmoke; margin-top: 20px;">Details</a>
+        <a routerLink="/myorders" class="ms-3" style="text-decoration: none; color: whitesmoke; margin-top: 20px;">My Orders</a>
+    </div>
+
+
+    <div *ngFor="let order of allOrder">
+      <div class="card ms-5 mt-5 mb-5">
+          <div class="card-content">
+            <p><span class="text-secondary">Billing Address:</span> {{order.fullname}},{{order.place}}</p>
+            <p><span class="text-secondary">Amount Paid :</span> <span> ₹{{order.GTotal}}/-</span></p>
+            <p><span class="text-secondary">Date Ordered:</span> <span>{{order.dateString.slice(0,16)}}</span></p>
+            <p><span class="text-secondary">Order Status:</span> <span class="text-success">{{order.status}}</span></p>
+            
+          </div>
+        </div>
+    </div>
+        
+    
+  </div>
+
+
+  
