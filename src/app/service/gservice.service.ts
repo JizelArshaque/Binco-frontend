@@ -136,4 +136,10 @@ export class GserviceService {
   getallOrderApi(){
     return this.http.get(`${this.server_url}/get/all/order`,this.addTokenToheaders())
   }
+
+  // update orders 
+
+  updateOrderStatus(item:any,id:any){
+    return this.http.put(`${this.server_url}/order/update/${id}`,item)
+  }
 }

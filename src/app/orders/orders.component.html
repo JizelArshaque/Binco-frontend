@@ -10,6 +10,9 @@
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
+
+
+                                
                                 <!-- Product name-->
                                 <p><span class="text-secondary">Amount Paid :</span> <span> ₹{{order.GTotal}}/-</span></p>
                                 <!-- Product price-->
@@ -17,8 +20,9 @@
                                 <p><span class="text-secondary">Order Status:</span> <span class="text-success">{{order.status}}</span></p>
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button class="btn btn-success mb-2" (click)="changeStatus(order._id)">Change Status</button>
+                        <div class="text-center" *ngIf="order.status !== 'Items Delivered!'">
+                            <button class="btn btn-success mb-2" (click)="changeStatus(order._id)" *ngIf="order.status !== 'dispatched'">Change Status</button>
+                            <button class="btn btn-success mb-2" (click)="delivered(order._id)" *ngIf = "order.status === 'dispatched' ">Delivered!</button>
                              
                         </div>
                         
