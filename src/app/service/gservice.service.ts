@@ -11,8 +11,8 @@ export class GserviceService {
    }
   
 
-  server_url = 'http://localhost:3000'
-
+  // server_url = 'http://localhost:3000'
+  server_url = 'https://bincoserver.onrender.com'
 
   addTokenToheaders(){
     let headers = new HttpHeaders()
