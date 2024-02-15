@@ -15,6 +15,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AddItemsComponent } from './add-items/add-items.component';
 import { MydetailsComponent } from './mydetails/mydetails.component';
 import { EditItemComponent } from './edit-item/edit-item.component';
+import { authguardGuard } from './guards/authguard.guard';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -25,11 +26,11 @@ const routes: Routes = [
   {path:'cart',component:CartComponent},
   {path:'wishlist',component:WishlistComponent},
   {path:'checkout',component:CheckoutComponent},
-  {path:'admin/home',component:AdminhomeComponent},
+  {path:'admin/home',component:AdminhomeComponent,canActivate:[authguardGuard]},
   {path:'myorders',component:MyordersComponent},
   {path:'orders',component:OrdersComponent},
   {path:'add/item',component:AddItemsComponent},
-  {path:'account/mydetails',component:MydetailsComponent},
+  {path:'account/mydetails',component:MydetailsComponent,canActivate:[authguardGuard]},
   {path:'edit/item/:id',component:EditItemComponent},
   {path:'**',component:PagenotfoundComponent}
 

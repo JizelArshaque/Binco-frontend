@@ -23,28 +23,30 @@
 
 <div id="layoutSidenav_content">
     <main>
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Dashboard</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Dashboard</li>
+<div class="container-fluid ">
+    <!-- <h1 class="mt-4">Dashboard</h1> -->
+    <ol class="breadcrumb mb-4 justify-content-center">
+        <li class="breadcrumb-item active "><h3>Dashboard</h3></li>
     </ol>
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-xl-3 col-md-6">
             <div class="card bg-primary text-white mb-4">
-                <div class="card-body">Primary Card</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">View Details</a>
-                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                <div class="card-body align-items-center justify-content-center d-flex flex-column">Amounts Generated In total</div>
+                <div class="card-footer d-flex align-items-center justify-content-center">
+                    <!-- <a class="small text-white stretched-link" href="#">View Details</a> -->
+                    <span class="">₹{{totalAmount}}</span>
+                    <!-- <div class="small text-white"><i class="fas fa-angle-right"></i></div> -->
                 </div>
             </div>
         </div>
         
         <div class="col-xl-3 col-md-6">
             <div class="card bg-success text-white mb-4">
-                <div class="card-body">Success Card</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">View Details</a>
-                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                <div class="card-body align-items-center justify-content-center d-flex flex-column">Total Orders Till date</div>
+                <div class="card-footer d-flex align-items-center justify-content-center">
+                    <h5><span>{{orderNumber}}</span></h5>
+                    <!-- <a class="small text-white stretched-link" href="#">View Details</a> -->
+                    <!-- <div class="small text-white"><i class="fas fa-angle-right"></i></div> -->
                 </div>
             </div>
         </div>
@@ -52,37 +54,26 @@
     </div>
     <div class="row">
        
-        <div class="col-xl-6">
+        <div class="col-xl-6" style="margin-left: 25%;">
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-chart-bar me-1"></i>
                     Bar Chart Example
                 </div>
-                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"><p>data loading!!!</p></canvas></div>
             </div>
         </div>
     </div>
     
 </div>
 
-<div>
-    <a routerLink="/add/item" class="btn btn-outline-success ms-5">Add Products</a>
-    <a routerLink="/orders" class="btn btn-outline-warning ms-5">All Orders</a>
-    <button class="btn btn-outline-danger ms-2" (click)="logout()">Logout</button>
+<div class="mb-5" style="margin-left: 33%;">
+    <button routerLink="/add/item" class="btn btn-outline-success ms-5">Add Products</button>
+    <button routerLink="/orders" class="btn btn-outline-warning ms-5">All Orders</button>
+    <button class="btn btn-outline-danger ms-5" (click)="logout()">Logout</button>
 </div>
 </main>
-<footer class="py-4 bg-light mt-auto">
-<div class="container-fluid px-4">
-    <div class="d-flex align-items-center justify-content-between small">
-        <div class="text-muted">Copyright &copy; Your Website 2023</div>
-        <div>
-            <a href="#">Privacy Policy</a>
-            &middot;
-            <a href="#">Terms &amp; Conditions</a>
-        </div>
-    </div>
-</div>
-</footer>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> 

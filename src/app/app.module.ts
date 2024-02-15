@@ -23,6 +23,8 @@ import { MydetailsComponent } from './mydetails/mydetails.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditItemComponent } from './edit-item/edit-item.component'
 import { NgxPayPalModule } from 'ngx-paypal';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchpipePipe } from './searchpipe.pipe';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     FooterComponent,
     AddItemsComponent,
     MydetailsComponent,
-    EditItemComponent
+    EditItemComponent,
+    SearchpipePipe
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPayPalModule
+    NgxPayPalModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-<button (click)="ordercreation()">hihihi</button>
+
 
 <div class="d-flex">
     <div class="col-md-6 d-flex flex-column justify-content-start align-items-center mt-5 mb-5">
@@ -86,12 +86,12 @@
                 <h5 class="text-secondary">Phone no:<span class="text-dark">{{checkoutForm.value.phone}}</span></h5>
                 <h5 class="text-secondary"> Pincode:<span class="text-dark">{{checkoutForm.value.pincode}}</span> </h5>
                 <h5 class="text-primary text-center">Total Price:<span class="text-danger"> ₹{{GrandTotal}}</span></h5>
-                <div class="d-flex justify-content-between mt-2" *ngIf="payment">
+                <div class="d-flex justify-content-between mt-2" *ngIf="!payment">
                     <button  class="btn btn-warning" (click)="cancel()">Cancel</button>
                     <button class="btn btn-success" (click)="makePaymentF()">Make Payment</button>
                 </div>
 
-                <div  *ngIf="!payment" class="mt-2">
+                <div  *ngIf="payment" class="mt-2">
                     <ngx-paypal  [config]="payPalConfig"></ngx-paypal>
                 </div>
 

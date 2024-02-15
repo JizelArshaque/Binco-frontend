@@ -15,8 +15,8 @@
                 <p class="lead">{{item.description}}</p>
                 <div class="d-flex">
                     
-                    <button class="btn btn-outline-success">Add to Cart</button>
-                    <button class="btn btn-outline-danger ms-4">Save for later</button>
+                    <button class="btn btn-outline-success" (click)="cartItem(item)">Add to Cart</button>
+                    <button class="btn btn-outline-danger ms-4" (click)="wishlistItem(item)">Save for later</button>
                 </div>
             </div>
         </div>

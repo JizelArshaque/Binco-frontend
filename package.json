@@ -20,6 +20,7 @@
     "@angular/router": "^16.1.0",
     "lord-icon-element": "^4.1.2",
     "lottie-web": "^5.12.2",
+    "ngx-pagination": "^6.0.3",
     "ngx-paypal": "^11.0.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.10.5",

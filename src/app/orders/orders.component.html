@@ -25,9 +25,14 @@
                             <button class="btn btn-success mb-2" (click)="delivered(order._id)" *ngIf = "order.status === 'dispatched' ">Delivered!</button>
                              
                         </div>
+
+                        
                         
                     </div>
+                    
                 </div>
+                
             </div>
+            <button class="btn btn-outline-danger" routerLink="/admin/home">Go back</button>
         </div>
     </section>

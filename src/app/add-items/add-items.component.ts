@@ -18,6 +18,7 @@ export class AddItemsComponent implements OnInit{
 
 
   allItem:any=[]
+  p:number=0
 
 
   // itemImage:any=""

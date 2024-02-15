@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GserviceService } from '../service/gservice.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +17,7 @@ export class ViewProductComponent implements OnInit{
     })
   }
 
-  constructor(private api:GserviceService, private route:ActivatedRoute){}
+  constructor(private api:GserviceService, private route:ActivatedRoute,private router:Router){}
 
   item:any={}
 
@@ -34,6 +34,41 @@ export class ViewProductComponent implements OnInit{
     })
   }
 
+  wishlistItem(item:any){
+    if(sessionStorage.getItem("token")){
+      this.api.wishlistApi(item).subscribe({
+        next:(res:any)=>{
+          Swal.fire('item added to wishlist')
+        },
+        error:(err:any)=>{
+          Swal.fire(err.error)
+        }
+      })
+    }else{
+      Swal.fire('please login First!')
+      this.router.navigateByUrl('/login')
+    }
+    
+  }
+
+  cartItem(item:any){
+    if(sessionStorage.getItem("token")){
+      console.log(item);
+      
+      this.api.addToCartApi(item).subscribe({
+        next:(res:any)=>{
+          Swal.fire('Item Added To cart!')
+        },
+        error:(err:any)=>{
+          Swal.fire('could not add to cart at the moment! please try after some time!')
+        }
+      })
+    }else{
+      Swal.fire('please login First!')
+      this.router.navigateByUrl('/login')
+    }
+    
+  }
 
 
 }

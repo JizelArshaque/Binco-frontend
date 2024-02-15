@@ -11,10 +11,14 @@ import { Router } from '@angular/router';
 export class AllproductsComponent implements OnInit{
   ngOnInit(): void {
     this.getproducts()
+    this.username = sessionStorage.getItem("username")
     
   }
   constructor(private api:GserviceService,private router:Router){}
+  username:any=""
   allItem:any=[]
+  p:number=0
+  searchkey:any=""
 
   getproducts(){
     this.api.getItemApi().subscribe({

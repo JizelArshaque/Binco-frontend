@@ -12,9 +12,12 @@ export class MydetailsComponent implements OnInit{
 
   ngOnInit(): void {
     this.getdetails()
+    this.username=sessionStorage.getItem("username")
+    
   }
 
   constructor(private router:Router,private api:GserviceService){}
+  username:any=""
   details:any=[]
 
   getdetails(){

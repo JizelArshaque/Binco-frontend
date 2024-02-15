@@ -11,8 +11,10 @@ export class MyordersComponent implements OnInit{
   constructor(private api:GserviceService){}
   ngOnInit(): void {
     this.getmyorders()
+    this.username=sessionStorage.getItem("username")
+    
   }
-
+  username:any=""
   allOrder:any=[]
    getmyorders(){
     this.api.getOrderApi().subscribe({
